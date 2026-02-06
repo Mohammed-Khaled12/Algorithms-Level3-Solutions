@@ -1,0 +1,67 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <iomanip>
+using namespace std;
+
+int getRandomNumber(int From, int To)
+{
+    return rand() % (To - From + 1) + From;
+}
+
+void fillArrayrandom(int arr[3][3], short rows, short col)
+{
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < col; j++)
+        {
+            arr[i][j] = getRandomNumber(1, 100);
+        }
+    }
+}
+
+void printArray(int arr[3][3], short rows, short col)
+{
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < col; j++)
+        {
+            cout << setw(3) << arr[i][j] << " ";
+        }
+
+        cout << "\n";
+    }
+}
+
+int colSum(int arr[3][3], short row, short colnum)
+{
+    int sum = 0;
+    for (int i = 0; i < row; i++)
+    {
+        sum += arr[i][colnum];
+    }
+    return sum;
+}
+
+void printColSum(int arr[3][3], short rows, short col)
+{
+    for (int j = 0; j < col; j++)
+    {
+        cout << "Column " << j + 1 << " = " << colSum(arr, rows, j) << "\n";
+    }
+}
+
+int main()
+{
+    srand(unsigned(time(NULL)));
+    int arr[3][3];
+    fillArrayrandom(arr, 3, 3);
+
+    cout << "The Follwing Is a 3x3 Matrix: \n";
+    printArray(arr, 3, 3);
+
+    cout << "\n";
+
+    cout << "The Follwing Is a Sum of Each Column: \n";
+    printColSum(arr, 3, 3);
+}
