@@ -43,3 +43,11 @@
 # Custom Rules for VS Code output files
 Problem[0-9]*
 !*.cpp
+!*.h
+
+# IDE Settings
+.vscode/
+.vs/
+*.sln
+*.vcxproj
+*.user
